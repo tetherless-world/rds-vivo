@@ -1,12 +1,13 @@
-*.class
+#Config
+deploy.properties
+build.properties
+runtime.properties
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+#Build dir
+.build/
 
-# Package Files #
-*.jar
-*.war
-*.ear
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+#Release files
+vivo-rel-*
+vitro-data
+data
+revisionInfo
