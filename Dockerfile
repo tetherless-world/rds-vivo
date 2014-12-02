@@ -58,7 +58,7 @@ RUN chmod +x /etc/service/tomcat7/run
 
 ENV VIVO_DIST maint-rel-1.7
 ENV VIVO_HOME /opt/vivo/home
-RUN mkdir -p $VIVO_HOME
+RUN mkdir -p $VIVO_HOME && mkdir -p /usr/local/vivo/data
 
 RUN git clone https://github.com/tetherless-world/rds-vivo.git
 WORKDIR rds-vivo
