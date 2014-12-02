@@ -59,6 +59,9 @@ ENV VIVO_DIST maint-rel-1.7
 ENV VIVO_HOME /opt/vivo/home
 RUN mkdir -p $VIVO_HOME
 
+RUN git clone https://github.com/tetherless-world/rds-vivo.git
+WORKDIR vivo
+
 RUN git submodule init && git submodule update
 
 WORKDIR ./vitro
