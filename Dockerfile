@@ -59,6 +59,8 @@ ENV VIVO_DIST maint-rel-1.7
 ENV VIVO_HOME /opt/vivo/home
 RUN mkdir -p $VIVO_HOME
 
+RUN git submodule init && git submodule update
+
 WORKDIR ./vitro
 RUN git checkout $VIVO_DIST
 
