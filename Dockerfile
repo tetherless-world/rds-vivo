@@ -33,6 +33,10 @@ RUN \
 ENV JAVA_HOME /usr/lib/jvm/java-7-oracle
 RUN echo "JAVA_HOME=/usr/lib/jvm/java-7-oracle" >> /etc/environment
 
+# Install Ant
+RUN \
+  apt-get install -y ant
+
 # Install Tomcat7
 RUN \
   apt-get update && \
@@ -75,6 +79,8 @@ RUN ant all
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+EXPOSE 8080
 
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
