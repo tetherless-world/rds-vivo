@@ -34,8 +34,7 @@ ENV JAVA_HOME /usr/lib/jvm/java-7-oracle
 RUN echo "JAVA_HOME=/usr/lib/jvm/java-7-oracle" >> /etc/environment
 
 # Install Ant
-RUN \
-  apt-get install -y ant
+RUN apt-get install -y ant
 
 # Install Tomcat7
 RUN \
