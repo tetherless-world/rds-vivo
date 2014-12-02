@@ -13,7 +13,7 @@
 	    tomcat.home
 	    webapp.name
 	     ====================================================================== -->
-<project name="rds-vivo" default="describe">
+<project name="vivo" default="describe">
 	
 	<!-- 
 		The build directory goes in the product directory. 
@@ -49,8 +49,7 @@
           
           Override the core version, so we can merge the three levels before building.                      
          - - - - - - - - - - - - - - - - - -->
-	<target name="prepare" depends="compileUtilities,product-prepare,vitroCore.prepare" />
-	<!-- <target name="prepare" depends="product-prepare,vitroCore.prepare" /> -->
+	<target name="prepare" depends="product-prepare,vitroCore.prepare" />
 
 	<!-- - - - - - - - - - - - - - - - - - 
           target: product-prepare
