@@ -1,0 +1,18 @@
+
+vivo:
+  build: .
+  links:
+  - "mysql:mysql"
+  environment:
+  - ADMIN_USER=rdsadmin
+  - ADMIN_PASS=F7kneX9t
+
+mysql:
+  image: mysql:5.7.5
+  ports:
+    - "3306:3306"
+  environment:
+    - MYSQL_ROOT_PASSWORD=jBd9tc4k
+    - MYSQL_USER=vivo
+    - MYSQL_PASSWORD=pF1bskdc
+    - MYSQL_DATABASE=vivodb

@@ -1,6 +1,6 @@
-[submodule "VIVO"]
-	path = VIVO
+[submodule "vivo"]
+	path = vivo
 	url = https://github.com/vivo-project/VIVO.git
-[submodule "Vitro"]
-	path = Vitro
+[submodule "vitro"]
+	path = vitro
 	url = https://github.com/vivo-project/Vitro.git
