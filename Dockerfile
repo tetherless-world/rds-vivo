@@ -26,7 +26,6 @@ RUN \
   add-apt-repository -y ppa:webupd8team/java && \
   apt-get update && \
   apt-get install -y oracle-java7-installer && \
-  rm -rf /var/lib/apt/lists/* && \
   rm -rf /var/cache/oracle-jdk7-installer
 
 # Define commonly used JAVA_HOME variable
@@ -34,12 +33,10 @@ ENV JAVA_HOME /usr/lib/jvm/java-7-oracle
 RUN echo "JAVA_HOME=/usr/lib/jvm/java-7-oracle" >> /etc/environment
 
 # Install Ant
-RUN apt-get update && \
-  apt-get install -y ant
+RUN apt-get install -y ant
 
 # Install Tomcat7
 RUN \
-  apt-get update && \
   apt-get install -y tomcat7 && \
   apt-get clean
 
