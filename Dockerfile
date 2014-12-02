@@ -46,7 +46,7 @@ RUN echo "JAVA_HOME=/usr/lib/jvm/java-7-oracle" >> /etc/default/tomcat7
 
 # Add script for configuring tomcat based on ENV variables
 ADD docker/vivo/tomcat-config.sh /tomcat-config.sh
-RUN chomd +x /tomcat-config.sh
+RUN chmod +x /tomcat-config.sh
 
 # Add script for starting tomcat as runit service
 RUN mkdir /etc/service/tomcat7
