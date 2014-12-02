@@ -40,6 +40,13 @@
 	      message="${deploy.properties.file} must contain a value for vivo.dir" />
 
 	<!--
+		Copy Solr modifications to Vitro Solr
+	-->
+	<copy todir="${vitro.core.dir}/solr" overwrite="true">
+		<fileset dir="solr"/>
+	</copy>
+
+	<!--
 		Base it all on the core build file. 
 	-->
 	<import file="${vitro.core.dir}/webapp/build.xml" />
@@ -94,16 +101,16 @@
 					<present targetdir="${vivo.dir}" />
 				</not>
 				<not>
-					<present targetdir="../../../Downloads" />
+					<present targetdir="." />
 				</not>
 			</fileset>
 			<fileset dir="${vivo.dir}">
 				<patternset refid="appbase.patterns" />
 				<not>
-					<present targetdir="../../../Downloads" />
+					<present targetdir="." />
 				</not>
 			</fileset>
-			<fileset dir="../../../Downloads">
+			<fileset dir=".">
 				<patternset refid="appbase.patterns" />
 			</fileset>
 		</copy>
