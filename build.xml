@@ -36,8 +36,8 @@
 	<property file="${build.properties.file}" />
 	<fail unless="vitro.core.dir"
 	      message="${build.properties.file} must contain a value for vitro.core.dir" />
-	<fail unless="vivo.dir"
-	      message="${build.properties.file} must contain a value for vivo.dir" />
+	<fail unless="vivo.core.dir"
+	      message="${build.properties.file} must contain a value for vivo.core.dir" />
 
 	<!--
 		Copy Solr modifications to Vitro Solr
@@ -68,13 +68,13 @@
 		<copy todir="${appbase.dir}/web" includeemptydirs="true">
 			<fileset dir="${corebase.dir}/web">
 				<not>
-					<present targetdir="${vivo.dir}/productMods" />
+					<present targetdir="${vivo.core.dir}/productMods" />
 				</not>
 				<not>
 					<present targetdir="./productMods" />
 				</not>
 			</fileset>
-			<fileset dir="${vivo.dir}/productMods">
+			<fileset dir="${vivo.core.dir}/productMods">
 				<not>
 					<present targetdir="./productMods" />
 				</not>
@@ -98,13 +98,13 @@
 				<patternset refid="appbase.patterns" />
 				<exclude name="themes/**/*/" />
 				<not>
-					<present targetdir="${vivo.dir}" />
+					<present targetdir="${vivo.core.dir}" />
 				</not>
 				<not>
 					<present targetdir="." />
 				</not>
 			</fileset>
-			<fileset dir="${vivo.dir}">
+			<fileset dir="${vivo.core.dir}">
 				<patternset refid="appbase.patterns" />
 				<not>
 					<present targetdir="." />
@@ -124,7 +124,7 @@
 	<target name="revisionInfo"
 	        depends="vitroCore.revisionInfo"
 	        description="--> Store revision info in build">
-		<addRevisionInfoLine productName="vivo" productCheckoutDir="${vivo.dir}" />
+		<addRevisionInfoLine productName="vivo" productCheckoutDir="${vivo.core.dir}" />
 		<addRevisionInfoLine productName="${ant.project.name}" productCheckoutDir="${basedir}" />
 	</target>
 
