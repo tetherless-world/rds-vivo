@@ -23,7 +23,7 @@
 	<property name="appbase.dir" location="${build.dir}/appBase" />
 
 	<!--
-		Load the properties from deploy.properties.
+		Load the properties from build.properties.
 	-->
 	<property name="build.properties.file" location="build.properties" />
 	<fail message="You must create a &quot;${build.properties.file}&quot; file.">
