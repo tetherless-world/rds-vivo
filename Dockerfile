@@ -79,8 +79,6 @@ RUN git checkout $VIVO_DIST
 WORKDIR ..
 RUN ant all
 
-RUN cp runtime.properties ${VIVO_HOME}
-
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
