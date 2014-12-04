@@ -1,0 +1,52 @@
+#!/bin/bash
+
+set -eu
+
+CONFIG = ${VIVO_HOME}/runtime.properties
+
+write_config () {
+
+    #copy config from build directory to
+    cp /rds-vivo/runtime.properties ${VIVO_HOME}
+
+    if [ -z "${VIVO_ADMIN}" ]; then
+        sed -i -e "s&rootUser.emailAddress.*&rootUser.emailAddress = ${VIVO_ADMIN}&" "${CONFIG}"
+    fi
+
+    local host=${MYSQL_PORT_3306_TCP_ADDR}
+    local port=${MYSQL_PORT_3306_TCP_PORT}
+    local db=${MYSQL_ENV_MYSQL_DATABASE}
+
+    # VitroConnection.DataSource.url
+    local vivo_db_url="jdbc:mysql://${db}:${port}/${db}"
+    sed -i -e "s&^VitroConnection.DataSource.url.*&VitroConnection.DataSource.url = ${vivo_db_url}&" "${CONFIG}"
+
+    # VitroConnection.DataSource.username
+    local vivo_db_user=${MYSQL_ENV_MYSQL_USER}
+    sed -i -e "s&^VitroConnection.DataSource.username.*&VitroConnection.DataSource.username = ${vivo_db_user}&" "${CONFIG}"
+
+    # VitroConnection.DataSource.password
+    local vivo_db_pass=${MYSQL_ENV_MYSQL_PASSWORD}
+    sed -i -e "s&^VitroConnection.DataSource.password.*&VitroConnection.DataSource.password = ${vivo_db_pass}&" "${CONFIG}"
+
+    if [ -z "${VIVO_EMAIL_SMTP_HOST}" ]; then
+        sed -i -e "s&^email.smtpHost.*&email.smtpHost = ${VIVO_EMAIL_SMTP_HOST}&" "${CONFIG}"
+    fi
+
+    if [ -z "${VIVO_EMAIL_REPLY_TO}" ]; then
+        sed -i -e "s&^email.replyTo.*&email.replyTo = ${VIVO_EMAIL_REPLY_TO}&" "${CONFIG}"
+    fi
+
+    if [ -z "${VIVO_DEFAULT_NS}" ]; then
+        sed -i -e "s&^Vitro.defaultNamespace.*&Vitro.defaultNamespace = ${VIVO_DEFAULT_NS}&" "${CONFIG}"
+    fi
+
+}
+
+# If we don't already have a config file, bootstrap
+if [ ! -e "$CONFIG" ]; then
+    if [ -z "$MYSQL_PORT" ]; then
+        abort "no MYSQL_PORT specified and linked container called 'mysql' was not found"
+    fi
+    write_config
+fi

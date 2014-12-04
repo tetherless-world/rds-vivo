@@ -8,6 +8,10 @@ vivo:
   environment:
   - ADMIN_USER=rdsadmin
   - ADMIN_PASS=F7kneX9t
+  - VIVO_ADMIN=zednis2@rpi.edu
+  - VIVO_EMAIL_SMTP_HOST=mail.rpi.edu
+  - VIVO_EMAIL_REPLY_TO=zednis2@rpi.edu
+  - VIVO_DEFAULT_NS=http://data.tw.rpi.edu/info/individual/
 
 mysql:
   image: mysql:5.7.5
