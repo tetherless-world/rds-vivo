@@ -56,7 +56,7 @@ RUN chmod +x /etc/service/tomcat7/run
 
 # Install VIVO
 
-ENV VIVO_DIST maint-rel-1.7
+ENV VIVO_DIST maint-rel-1.6.2
 ENV VIVO_HOME /opt/vivo/home
 ENV VIVO_DATA /usr/local/vivo/data
 
