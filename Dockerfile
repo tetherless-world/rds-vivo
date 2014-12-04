@@ -59,11 +59,12 @@ RUN chmod +x /etc/service/tomcat7/run
 ENV VIVO_DIST maint-rel-1.7
 ENV VIVO_HOME /opt/vivo/home
 ENV VIVO_DATA /usr/local/vivo/data
-RUN mkdir -p ${VIVO_HOME} && chown -R tomcat7:tomcat7 ${VIVO_HOME}
-RUN mkdir -p ${VIVO_DATA} && chown -R tomcat7:tomcat7 ${VIVO_DATA}
-RUN mkdir -p ${CATALINA_BASE}/temp && chown -R tomcat7:tomcat7 ${CATALINA_BASE}/temp
-RUN chown -R tomcat7:tomcat7 ${CATALINA_BASE}/logs
-RUN mkdir -p ${CATALINA_HOME}/logs && chown -R tomcat7:tomcat7 ${CATALINA_HOME}/logs
+
+# Create VIVO required directories
+RUN mkdir -p ${VIVO_HOME}
+RUN mkdir -p ${VIVO_DATA}
+RUN mkdir -p ${CATALINA_BASE}/temp
+RUN mkdir -p ${CATALINA_HOME}/logs
 
 RUN git clone https://github.com/tetherless-world/rds-vivo.git
 WORKDIR rds-vivo
@@ -82,8 +83,15 @@ RUN ant all
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# Set permissions on all VIVO directories
+RUN chown -R tomcat7:tomcat7 ${VIVO_HOME}
+RUN chown -R tomcat7:tomcat7 ${VIVO_DATA}
+RUN chown -R tomcat7:tomcat7 ${CATALINA_BASE}/temp
+RUN chown -R tomcat7:tomcat7 ${CATALINA_BASE}/logs
+RUN chown -R tomcat7:tomcat7 ${CATALINA_HOME}/logs
+
 # Add vivo configuration script to runit
-ADD docker/vivo/my_init.d /etc/my_init.d
+ADD docker/vivo/my_init.d/ /etc/my_init.d/
 
 EXPOSE 8080
 
