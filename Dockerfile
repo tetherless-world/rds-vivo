@@ -72,10 +72,10 @@ WORKDIR rds-vivo
 RUN git submodule init && git submodule update
 
 WORKDIR ./vitro
-RUN git checkout $VIVO_DIST .
+RUN git checkout $VIVO_DIST
 
 WORKDIR ../vivo
-RUN git checkout $VIVO_DIST .
+RUN git checkout $VIVO_DIST
 
 WORKDIR ..
 RUN ant all
