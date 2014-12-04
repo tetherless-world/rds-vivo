@@ -2,7 +2,7 @@
 
 set -eu
 
-CONFIG = ${VIVO_HOME}/runtime.properties
+CONFIG=${VIVO_HOME}/runtime.properties
 
 write_config () {
 
@@ -18,7 +18,7 @@ write_config () {
     local db=${MYSQL_ENV_MYSQL_DATABASE}
 
     # VitroConnection.DataSource.url
-    local vivo_db_url="jdbc:mysql://${db}:${port}/${db}"
+    local vivo_db_url="jdbc:mysql://${host}:${port}/${db}"
     sed -i -e "s&^VitroConnection.DataSource.url.*&VitroConnection.DataSource.url = ${vivo_db_url}&" "${CONFIG}"
 
     # VitroConnection.DataSource.username
