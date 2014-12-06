@@ -1,6 +1,6 @@
 
 vivo:
-  build: .
+  image: rds-vivo:latest
   ports:
   - "8080:8080"
   links:
