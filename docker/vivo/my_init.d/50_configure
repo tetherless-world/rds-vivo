@@ -9,8 +9,8 @@ write_config () {
     #copy config from build directory to
     cp /rds-vivo/runtime.properties ${VIVO_HOME}
 
-    if [ -z "${VIVO_ADMIN}" ]; then
-        sed -i -e "s&rootUser.emailAddress.*&rootUser.emailAddress = ${VIVO_ADMIN}&" "${CONFIG}"
+    if [ -n "${VIVO_ADMIN}" ]; then
+        sed -i -e "s&^rootUser.emailAddress.*&rootUser.emailAddress = ${VIVO_ADMIN}&" "${CONFIG}"
     fi
 
     local host=${MYSQL_PORT_3306_TCP_ADDR}
@@ -29,15 +29,15 @@ write_config () {
     local vivo_db_pass=${MYSQL_ENV_MYSQL_PASSWORD}
     sed -i -e "s&^VitroConnection.DataSource.password.*&VitroConnection.DataSource.password = ${vivo_db_pass}&" "${CONFIG}"
 
-    if [ -z "${VIVO_EMAIL_SMTP_HOST}" ]; then
+    if [ -n "${VIVO_EMAIL_SMTP_HOST}" ]; then
         sed -i -e "s&^email.smtpHost.*&email.smtpHost = ${VIVO_EMAIL_SMTP_HOST}&" "${CONFIG}"
     fi
 
-    if [ -z "${VIVO_EMAIL_REPLY_TO}" ]; then
+    if [ -n "${VIVO_EMAIL_REPLY_TO}" ]; then
         sed -i -e "s&^email.replyTo.*&email.replyTo = ${VIVO_EMAIL_REPLY_TO}&" "${CONFIG}"
     fi
 
-    if [ -z "${VIVO_DEFAULT_NS}" ]; then
+    if [ -n "${VIVO_DEFAULT_NS}" ]; then
         sed -i -e "s&^Vitro.defaultNamespace.*&Vitro.defaultNamespace = ${VIVO_DEFAULT_NS}&" "${CONFIG}"
     fi
 
