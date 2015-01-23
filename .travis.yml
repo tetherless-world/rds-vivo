@@ -3,3 +3,6 @@ jdk:
 - openjdk7
 - oraclejdk7
 #- oraclejdk8
+before_script:
+- cd vitro && git checkout maint-rel-1.6 && cd ..
+- cd vivo && git checkout maint-rel-1.6 && cd ..
