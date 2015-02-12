@@ -1668,11 +1668,11 @@ section.property-group h2 {
 }
 article.property {
     width: 852px;
+    border: none;
 }
 article.property h3 {
-    background: #fafaf9;
     font-size: 1.063em;
-    color: #8aa149;
+    color: #8f928d;
 }
 article.property ul.property-list li.subclass h3 {
     font-size: 1.063em;
