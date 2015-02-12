@@ -476,21 +476,16 @@ h1.vivo-logo {
     height: 59px;
     top: 28px;
     left: 0;
-    #background: url(../images/idea-logo-white.png) 0 0 no-repeat;
 }
 
 h1.vivo-logo a {
     display: block;
     width: 386px;
     height: 59px;
+    background: url(../images/idea-logo-white.png) 0 0 no-repeat;
+    background-size: contain;
 }
 
-div#rpi-logo {
-    height: 59px;
-    padding: 20px 0; 
-    font-family: Verdana, Helvetica, Arial, sans-serif; 
-    #color: #bbbbbb;
-}
 
 /* HEADER NAV------>  */
 ul#header-nav {

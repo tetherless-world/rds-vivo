@@ -2,17 +2,7 @@
 
 <header id="branding" role="banner">
 
-    <#--
-    <h1 class="vivo-logo"><a title="${i18n().identity_title}" href="${urls.home}"><span class="displace">${siteName}</span></a></h1>
-    -->
-
-    <div id="rpi-logo">
-    	 <div id="rpi-logo-text">
-	      <a href="http://www.rpi.edu" style="text-decoration: none;">
-	      	 <img src="http://www.rpi.edu/academics/engineering/images/rpi-seal-white.png">
-	      </a><span>- Troy, NY USA</span>
-	 </div>
-    </div>
+    <h1 class="vivo-logo"><a title="${i18n().identity_title}" href="http://idea.rpi.edu"><span class="displace">${siteName}</span></a></h1>
     
     <#-- Since we are using a graphic text for the tagline, we won't render ${siteTagline}
     <#if siteTagline?has_content>
