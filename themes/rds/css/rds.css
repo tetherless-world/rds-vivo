@@ -617,9 +617,12 @@ body.loggedIn #intro {
     width: 98%;
 }
 #intro h2 {
-    padding: 35px 0 12px 24px;
+    /*padding: 35px 0 12px 24px;*/
     border-bottom: none;
-    color: #2485AE;
+    color: #555;
+    font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    text-shadow: 2px 2px 0 rgba(210, 210, 210, .7);
+    font-size: 36px;
 }
 #intro p {
     font-size: 16px;
@@ -1661,6 +1664,15 @@ p.view-all-coauthors {
     width: 920px;
     background: #fff;
 }
+
+section.property-group div {
+    margin-top: 0px;
+}
+
+section.property-group {
+    padding-top: 5px;
+}
+
 section.property-group h2 {
     font-size: 1.25em;
     color: #2485ae;
@@ -1669,10 +1681,17 @@ section.property-group h2 {
 article.property {
     width: 852px;
     border: none;
+    margin-bottom: 0px;
 }
 article.property h3 {
     font-size: 1.063em;
     color: #8f928d;
+}
+article.property ul.property-list {
+    padding-bottom: 5px;
+}
+article.property ul.property-list li {
+    padding-top: 5px;
 }
 article.property ul.property-list li.subclass h3 {
     font-size: 1.063em;
