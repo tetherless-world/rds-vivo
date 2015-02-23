@@ -12,8 +12,9 @@
         <#if selectedDataDG?has_content>
             <#list selectedDataDG as resultRow>
                 <#assign uri = resultRow["dataset"] />
-                <#assign label = resultRow["dataset_title"]/>
-                <#assign leadResearcherURI = resultRow["leadResearcher"] />
+                <#assign title = resultRow["dataset_title"]/>
+                <#assign leadResearcher = resultRow["leadResearcher"] />
+                <#assign leadResearcher_name = resultRow["leadResearcher_name"] />
                 <#assign localname = uri?substring(uri?last_index_of("/")) />
 
                 // is there a way to set individualURI in the home page?

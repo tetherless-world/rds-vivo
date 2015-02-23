@@ -63,7 +63,11 @@
 
         <#include "footer.ftl">
         <#-- builds a json object that is used by js to render the academic departments section -->
-        <@lh.listAcademicDepartments />
+        <#-- <@lh.listAcademicDepartments /> -->
+
+        <#-- builds a json object that is used by js to render the selected data section -->
+        <@rds.listSelectedData />
+
     <script>       
         var i18nStrings = {
             researcherString: '${i18n().researcher}',

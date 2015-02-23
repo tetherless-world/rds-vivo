@@ -8,7 +8,7 @@ $(document).ready(function(){
 
     function buildSelectedData() {
 
-        var datasetCount = datasets.length;
+        var datasetCount = selectedData.length;
         var html = "";
 
         if( datasetCount == 0 ) {
@@ -19,9 +19,22 @@ $(document).ready(function(){
             html = "<ul>";
 
             for ( var i = 0; i < datasetCount; i++) {
-                html += "<li><a href='" + urlsBase + "/individual"
-                + datasets[i].uri + "'>"
-                + datasets[i].name + "</a></li>";
+                html += "<li role='listitem'><a href='" + urlsBase + "/individual"
+                + selectedData[i].uri + "'>"
+                + selectedData[i].title + "</a>";
+
+                html += "<br />"
+                + "<span class='title' style='font-size: 0.825em'>";
+
+                if(selectedData[i].leadResearcher != null) {
+                    html += "<b>Lead Researcher:</b> <a href='" + urlsBase + "/individual"
+                    + selectedData[i].leadResearcher + "'>"
+                    + selectedData[i].leadResearcher_name + "</a>"
+                    + "</span>";
+                }
+
+                html += "</span>"
+                + "</li>";
             }
 
             html += "</ul><ul style='list-style:none'>"
