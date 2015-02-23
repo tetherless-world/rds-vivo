@@ -1023,6 +1023,40 @@ a.view-all-style {
     display: inline;
     padding: 3px 10px;
 }
+
+#home-selected-data {
+    width: 297px;
+    margin-left: 15px;
+    float: left;
+}
+
+#home-selected-data h4 {
+    display: inline;
+    padding: 3px 10px;
+}
+
+#selected-data ul {
+    list-style: disc outside url(../../../images/arrowIcon.gif);
+    padding: 0.4em 0 0.6em 1.8em;
+}
+
+#selected-data li {
+    line-height: 1.25em;
+    padding-top: 1.0em;
+    padding-right: 4px;
+    font-size: 0.9em;
+}
+
+.no-datasets-found {
+    padding-top:0.3em
+}
+
+.all-datasets-link {
+    font-size:0.9em;
+    text-align:right;
+    padding: 6px 16px 0 0
+}
+
 div#tempSpacing {
     margin-top:30px;
     padding-left:20px;
