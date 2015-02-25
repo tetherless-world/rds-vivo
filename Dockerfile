@@ -56,32 +56,35 @@ RUN chmod +x /etc/service/tomcat7/run
 
 # Install VIVO
 
-ENV VIVO_DIST maint-rel-1.6.2
+#ENV VIVO_DIST maint-rel-1.6.2
 ENV VIVO_HOME /opt/vivo/home
 ENV VIVO_DATA /usr/local/vivo/data
+ENV VIVO_BUILD /opt/build
+
+VOLUME ["${VIVO_HOME}", "${VIVO_DATA}"]
 
 # Create VIVO required directories
-RUN mkdir -p ${VIVO_HOME}
-RUN mkdir -p ${VIVO_DATA}
 RUN mkdir -p ${CATALINA_BASE}/temp
 RUN mkdir -p ${CATALINA_HOME}/logs
 
-RUN git clone https://github.com/tetherless-world/rds-vivo.git
-WORKDIR rds-vivo
+WORKDIR ${VIVO_BUILD}
 
-RUN git submodule init && git submodule update
-
-WORKDIR ./vitro
-RUN git checkout $VIVO_DIST
-
-WORKDIR ../vivo
-RUN git checkout $VIVO_DIST
+ADD productMods ${VIVO_BUILD}/productMods
+ADD rdf ${VIVO_BUILD}/rdf
+ADD scripts ${VIVO_BUILD}/scripts
+ADD solr ${VIVO_BUILD}/solr
+ADD src ${VIVO_BUILD}/src
+ADD themes ${VIVO_BUILD}/themes
+ADD vitro ${VIVO_BUILD}/vitro
+ADD vivo ${VIVO_BUILD}/vivo
+ADD build.properties build.xml ${VIVO_BUILD}/
 
 WORKDIR ..
 RUN ant all
 
-# Clean up APT when done.
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+# copy runtime.properties to /etc/vivo where it is found by my-init configure script on start-up
+RUN mkdir -p /etc/vivo
+ADD runtime.properties /etc/vivo/
 
 # Set permissions on all VIVO directories
 RUN chown -R tomcat7:tomcat7 ${VIVO_HOME}
@@ -92,6 +95,9 @@ RUN chown -R tomcat7:tomcat7 ${CATALINA_HOME}/logs
 
 # Add vivo configuration script to runit
 ADD docker/vivo/my_init.d/ /etc/my_init.d/
+
+# Clean up APT when done.
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 EXPOSE 8080
 
