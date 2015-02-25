@@ -67,8 +67,6 @@ VOLUME ["${VIVO_HOME}", "${VIVO_DATA}"]
 RUN mkdir -p ${CATALINA_BASE}/temp
 RUN mkdir -p ${CATALINA_HOME}/logs
 
-WORKDIR ${VIVO_BUILD}
-
 ADD productMods ${VIVO_BUILD}/productMods
 ADD rdf ${VIVO_BUILD}/rdf
 ADD scripts ${VIVO_BUILD}/scripts
@@ -79,7 +77,7 @@ ADD vitro ${VIVO_BUILD}/vitro
 ADD vivo ${VIVO_BUILD}/vivo
 ADD build.properties build.xml ${VIVO_BUILD}/
 
-WORKDIR ..
+WORKDIR ${VIVO_BUILD}
 RUN ant all
 
 # copy runtime.properties to /etc/vivo where it is found by my-init configure script on start-up
