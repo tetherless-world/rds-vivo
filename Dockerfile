@@ -61,8 +61,6 @@ ENV VIVO_HOME /opt/vivo/home
 ENV VIVO_DATA /usr/local/vivo/data
 ENV VIVO_BUILD /opt/build
 
-VOLUME ["${VIVO_HOME}", "${VIVO_DATA}"]
-
 # Create VIVO required directories
 RUN mkdir -p ${CATALINA_BASE}/temp
 RUN mkdir -p ${CATALINA_HOME}/logs
@@ -90,6 +88,8 @@ RUN chown -R tomcat7:tomcat7 ${VIVO_DATA}
 RUN chown -R tomcat7:tomcat7 ${CATALINA_BASE}/temp
 RUN chown -R tomcat7:tomcat7 ${CATALINA_BASE}/logs
 RUN chown -R tomcat7:tomcat7 ${CATALINA_HOME}/logs
+
+VOLUME ["${VIVO_HOME}", "${VIVO_DATA}"]
 
 # Add vivo configuration script to runit
 ADD docker/vivo/my_init.d/ /etc/my_init.d/
