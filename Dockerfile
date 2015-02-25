@@ -62,6 +62,8 @@ ENV VIVO_DATA /usr/local/vivo/data
 ENV VIVO_BUILD /opt/build
 
 # Create VIVO required directories
+RUN mkdir -p ${VIVO_HOME}
+RUN mkdir -p ${VIVO_DATA}
 RUN mkdir -p ${CATALINA_BASE}/temp
 RUN mkdir -p ${CATALINA_HOME}/logs
 
