@@ -7,7 +7,7 @@ CONFIG=${VIVO_HOME}/runtime.properties
 write_config () {
 
     #copy config from build directory to
-    cp /rds-vivo/runtime.properties ${VIVO_HOME}
+    cp /etc/vivo/runtime.properties ${VIVO_HOME}
 
     if [ -n "${VIVO_ADMIN}" ]; then
         sed -i -e "s&^rootUser.emailAddress.*&rootUser.emailAddress = ${VIVO_ADMIN}&" "${CONFIG}"
