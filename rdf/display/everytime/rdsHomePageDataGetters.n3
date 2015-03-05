@@ -8,7 +8,7 @@
 
 # selected data datagetter
 
-<freemarker:lib-home-page.ftl> display:hasDataGetter display:selectedDataDataGetter .
+<freemarker:rds-home-page.ftl> display:hasDataGetter display:selectedDataDataGetter .
 
 display:selectedDataDataGetter
     a <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.SparqlQueryDataGetter> ;
@@ -27,7 +27,7 @@ display:selectedDataDataGetter
         ?dataset dct:title ?label .
         BIND(str(?label) as ?title) .
         OPTIONAL {
-            ?dataset rds:leadResearcher2 ?leadResearcher .
+            ?dataset rds:leadResearcher ?leadResearcher .
             ?leadResearcher rdfs:label ?leadResearcher_label .
             BIND(str(?leadResearcher_label) AS ?leadResearcher_name)
         }
