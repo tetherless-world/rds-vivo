@@ -1,4 +1,4 @@
-<#macro selectedDataHtml selectedData=foo>
+<#macro selectedDataHtml>
 <section id="home-selected-data" class="home-sections">
     <h4>${i18n().datasets_capitalized}</h4>
     <div id="selected-data">
