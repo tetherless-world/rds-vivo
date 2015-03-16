@@ -26,7 +26,7 @@ RUN mkdir -p ${FUSEKI_BASE}
 WORKDIR ${FUSEKI_BASE}
 
 RUN \
-  wget --quiet wget https://wiki.duraspace.org/download/attachments/33949103/jena-fuseki-1.1.1-vivo.tar.gz && \
+  wget --quiet https://wiki.duraspace.org/download/attachments/33949103/jena-fuseki-1.1.1-vivo.tar.gz && \
   tar xvzf jena-fuseki-1.1.1-vivo.tar.gz && \
   cd jena-fuseki-1.1.1-vivo && \
   chmod +x fuseki-server s-*
