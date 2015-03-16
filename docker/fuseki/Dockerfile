@@ -33,6 +33,8 @@ RUN \
  
 ENV FUSEKI_HOME ${FUSEKI_BASE}/jena-fuseki-1.1.1-vivo
 
+ADD run-fuseki.sh ${FUSEKI_HOME}/run-fuseki
+
 # Add Configuration script to runit
 ADD my_init.d/ /etc/my_init.d/
 
