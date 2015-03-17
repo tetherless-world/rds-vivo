@@ -1,6 +1,6 @@
 FROM phusion/baseimage:0.9.15
 MAINTAINER Stephan Zednik "zednis2@rpi.edu"
-ENV REFRESHED_AT 2015-01-28
+ENV REFRESHED_AT 2015-03-15
  
 # Install build dependencies
 RUN \
