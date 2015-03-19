@@ -8,7 +8,8 @@
     rdfs:label "The data catalog vocabulary"@en-US .
 
 <http://www.w3.org/ns/dcat#Dataset>
-    rdfs:label "Dataset"@en-US .
+    rdfs:label "Dataset"@en-US ;
+    vitro:inClassGroup <http://vivoweb.org/ontology#vitroClassGroupData> .
 
 <http://www.w3.org/ns/dcat#Distribution>
     rdfs:label "Distribution"@en-US .
