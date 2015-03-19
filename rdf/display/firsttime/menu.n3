@@ -134,4 +134,4 @@ display:homeDataGetter
 
 display:dataDataGetter
     a <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.ClassGroupPageData>;
-    display:forClassGroup vivoweb:vitroClassGroupevents .
+    display:forClassGroup vivoweb:vitroClassGroupData .
