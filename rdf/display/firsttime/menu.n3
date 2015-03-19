@@ -20,7 +20,8 @@ display:DefaultMenu
     display:hasElement display:OrganizationsMenuItem ;
     display:hasElement display:PeopleMenuItem ;
     display:hasElement display:ResearchMenuItem ;
-    display:hasElement display:DataMenuItem .
+    display:hasElement display:DataMenuItem ;
+    display:hasElement display:DatasetBrowserMenuItem .
 
 #### Menu Items for Default Menu ####
 
