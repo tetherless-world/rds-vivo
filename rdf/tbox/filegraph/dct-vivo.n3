@@ -1,0 +1,33 @@
+@prefix vitro: <http://vitro.mannlib.cornell.edu/ns/vitro/0.7#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vivo:  <http://vivoweb.org/ontology#> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+
+dct:contributor
+    vitro:inPropertyGroupAnnot vivo:vitroPropertyGroupRDS .
+
+dct:issued
+    vitro:inPropertyGroupAnnot vivo:vitroPropertyGroupRDS .
+
+dct:title
+    vitro:inPropertyGroupAnnot vivo:vitroPropertyGroupRDS .
+
+dct:description
+    vitro:inPropertyGroupAnnot vivo:vitroPropertyGroupRDS .
+
+dct:identifier
+    vitro:inPropertyGroupAnnot vivo:vitroPropertyGroupRDS .
+
+dct:format
+    vitro:inPropertyGroupAnnot vivo:vitroPropertyGroupRDS .
+
+dct:temporal
+    vitro:inPropertyGroupAnnot vivo:vitroPropertyGroupRDS .
+
+dct:spatial
+    vitro:inPropertyGroupAnnot vivo:vitroPropertyGroupRDS .
+
+dct:accrualPeriodicity
+    vitro:inPropertyGroupAnnot vivo:vitroPropertyGroupRDS .
