@@ -60,6 +60,12 @@ display:DataMenuItem
     display:linkText "Data";
     display:toPage display:Data .
 
+display:DatasetBrowserMenuItem
+    a display:NavigationElement ;
+    display:menuPosition 7;
+    display:linkText "Dataset Browser" ;
+    display:toPage display:DatasetBrowser .
+
 display:Home
     a display:HomePage ;
     a display:Page ;
@@ -108,6 +114,12 @@ display:Data
     display:urlMapping "/data" ;
     display:hasDataGetter display:dataDataGetter .
 
+display:DatasetBrowser
+    a display:Page ;
+    display:title "Dataset Browser" ;
+    display:urlMapping "/dataset-browser" ;
+    display:hasDataGetter display:datasetBrowserDataGetter .
+
 #The data getter objects used above
 display:peopleDataGetter
       a <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.ClassGroupPageData>;
@@ -135,3 +147,8 @@ display:homeDataGetter
 display:dataDataGetter
     a <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.ClassGroupPageData>;
     display:forClassGroup vivoweb:vitroClassGroupData .
+
+display:datasetBrowserDataGetter
+    a <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.FixedHTMLDataGetter>;
+    display:htmlValue "&lt;iframe src=&quot;/search/index.html&quot; style=&quot;overflow:hidden;height:800;width:100%&quot; height=&quot;800&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;" ;
+    display:saveToVar "html" .
