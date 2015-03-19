@@ -9,3 +9,6 @@
 
 <http://www.w3.org/ns/dcat#Dataset>
     rdfs:label "Dataset"@en-US .
+
+<http://www.w3.org/ns/dcat#Distribution>
+    rdfs:label "Distribution"@en-US .
