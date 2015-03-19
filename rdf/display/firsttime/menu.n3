@@ -145,10 +145,10 @@ display:homeDataGetter
       a <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.BrowseDataGetter> .
 
 display:dataDataGetter
-    a <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.ClassGroupPageData>;
+    a <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.ClassGroupPageData> ;
     display:forClassGroup vivoweb:vitroClassGroupData .
 
 display:datasetBrowserDataGetter
-    a <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.FixedHTMLDataGetter>;
-    display:htmlValue "&lt;iframe src=&quot;/search/index.html&quot; style=&quot;overflow:hidden;height:800;width:100%&quot; height=&quot;800&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;" ;
+    a  <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.FixedHTMLDataGetter> ;
+    display:htmlValue "<iframe src=\"/search/index.html\" style=\"overflow:hidden;height:800;width:100%\" height=\"800\" width=\"100%\"></iframe>"@en ;
     display:saveToVar "html" .
