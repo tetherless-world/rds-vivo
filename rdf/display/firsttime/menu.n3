@@ -118,7 +118,7 @@ display:Data
 display:DatasetBrowser
     a display:Page ;
     display:title "Dataset Browser" ;
-    display:urlMapping "/dataset-browser" ;
+    display:urlMapping "/browser" ;
     display:hasDataGetter display:datasetBrowserDataGetter .
 
 #The data getter objects used above
