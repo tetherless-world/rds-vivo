@@ -32,6 +32,9 @@ dcat:keyword
 dcat:landingPage
     vitro:inPropertyGroupAnnot vivo:vitroPropertyGroupRDS .
 
+dcat:contactPoint
+    vitro:inPropertyGroupAnnot vivo:vitroPropertyGroupRDS .
+
 dcat:accessURL
     vitro:inPropertyGroupAnnot vivo:vitroPropertyGroupRDS .
 
