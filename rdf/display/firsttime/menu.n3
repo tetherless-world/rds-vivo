@@ -33,37 +33,37 @@ display:HomeMenuItem
 
 display:PeopleMenuItem
     a display:NavigationElement ;
-    display:menuPosition 2;
+    display:menuPosition 4;
     display:linkText "People";
     display:toPage display:People .
 
 display:OrganizationsMenuItem
     a display:NavigationElement ;
-    display:menuPosition 3;
+    display:menuPosition 6;
     display:linkText "Organizations";
     display:toPage display:Organizations .
 
 display:ResearchMenuItem
     a display:NavigationElement ;
-    display:menuPosition 4;
+    display:menuPosition 5;
     display:linkText "Research";
     display:toPage display:Research .
 
 display:EventsMenuItem
     a display:NavigationElement ;
-    display:menuPosition 5;
+    display:menuPosition 7;
     display:linkText "Events";
     display:toPage display:Events .
 
 display:DataMenuItem
     a display:NavigationElement ;
-    display:menuPosition 6;
+    display:menuPosition 2;
     display:linkText "Data";
     display:toPage display:Data .
 
 display:DatasetBrowserMenuItem
     a display:NavigationElement ;
-    display:menuPosition 7;
+    display:menuPosition 3;
     display:linkText "Dataset Browser" ;
     display:toPage display:DatasetBrowser .
 
@@ -151,5 +151,5 @@ display:dataDataGetter
 
 display:datasetBrowserDataGetter
     a  <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.FixedHTMLDataGetter> ;
-    display:htmlValue "<iframe src=\"/search/index.html\" style=\"overflow:hidden;height:800;width:100%\" height=\"800\" width=\"100%\"></iframe>"@en ;
+    display:htmlValue "<iframe src=\"/search/index.html\" style=\"overflow:hidden;height:800;width:100%\" height=\"1200\" width=\"100%\" scrolling=\"no\"></iframe>"@en ;
     display:saveToVar "html" .
