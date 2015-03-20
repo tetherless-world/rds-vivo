@@ -5,6 +5,10 @@
 @prefix vivo:  <http://vivoweb.org/ontology#> .
 @prefix dct:   <http://purl.org/dc/terms/> .
 
+<http://purl.org/dc/terms/>
+    vitro:ontologyPrefixAnnot  "dct"^^<http://www.w3.org/2001/XMLSchema#string> ;
+    rdfs:label "Dublin Core Terms (DCT)"@en-US .
+
 dct:contributor
     vitro:inPropertyGroupAnnot vivo:vitroPropertyGroupRDS .
 
