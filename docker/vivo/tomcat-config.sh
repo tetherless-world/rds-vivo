@@ -19,3 +19,6 @@ then
 	sed -i "s#.*max-file-size.*#\t<max-file-size>${MAX_UPLOAD_SIZE}</max-file-size>#g" ${CATALINA_BASE}/webapps/manager/WEB-INF/web.xml
 	sed -i "s#.*max-request-size.*#\t<max-request-size>${MAX_UPLOAD_SIZE}</max-request-size>#g" ${CATALINA_BASE}/webapps/manager/WEB-INF/web.xml
 fi
+
+exec cp ${CATALINA_BASE}/conf/server.xml ${CATALINA_BASE}/conf/server.xml.bak
+exec xsltproc -stringparam DOC_BASE "${CATALINA_BASE}/webapps/vivo" /etc/tomcat/server.xsl ${CATALINA_BASE}/conf/server.xml > ${CATALINA_BASE}/conf/server.xml
