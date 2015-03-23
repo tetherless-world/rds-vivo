@@ -49,6 +49,7 @@ RUN echo "JAVA_HOME=/usr/lib/jvm/java-7-oracle" >> /etc/default/tomcat7
 ADD docker/vivo/tomcat-config.sh /etc/tomcat/tomcat-config.sh
 ADD docker/vivo/server.xsl /etc/tomcat/server.xsl
 RUN chmod +x /etc/tomcat/tomcat-config.sh
+COPY docker/vivo/server.xml ${CATALINA_BASE}/conf/server.xml
 
 # Add script for starting tomcat as runit service
 RUN mkdir /etc/service/tomcat7
