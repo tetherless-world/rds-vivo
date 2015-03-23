@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context path="/vivosolr"
+         docBase="/var/lib/tomcat7/webapps/vivosolr"
+         reloadable="true"
+         cookies="true" >
+
+    <!--
+    <Manager pathname="/vivosolr" />
+    -->
+
+</Context>
