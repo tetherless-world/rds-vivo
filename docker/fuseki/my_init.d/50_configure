@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -eu
+
+CONFIG=${FUSEKI_HOME}/fuseki-vivo.ttl
+
+sed -i -e "s&sdb:sdbHost.*&sdb:sdbHost \"${MYSQL_PORT_3306_TCP_ADDR}\" ;&" "${CONFIG}"
+sed -i -e "s&sdb:sdbName.*&sdb:sdbName \"${MYSQL_ENV_MYSQL_DATABASE}\" ;&" "${CONFIG}"
+sed -i -e "s&sdb:sdbUser.*&sdb:sdbUser \"${MYSQL_ENV_MYSQL_USER}\" ;&" "${CONFIG}"
+sed -i -e "s&sdb:sdbPassword.*&sdb:sdbPassword \"${MYSQL_ENV_MYSQL_PASSWORD}\" ;&" "${CONFIG}"

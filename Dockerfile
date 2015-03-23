@@ -45,9 +45,10 @@ ENV CATALINA_HOME /usr/share/tomcat7
 ENV PATH $PATH:$CATALINA_HOME/bin
 RUN echo "JAVA_HOME=/usr/lib/jvm/java-7-oracle" >> /etc/default/tomcat7
 
-# Add script for configuring tomcat based on ENV variables
-ADD docker/vivo/tomcat-config.sh /tomcat-config.sh
-RUN chmod +x /tomcat-config.sh
+# Add scripts for configuring tomcat based on ENV variables
+ADD docker/vivo/tomcat-config.sh /etc/tomcat/tomcat-config.sh
+ADD docker/vivo/server.xsl /etc/tomcat/server.xsl
+RUN chmod +x /etc/tomcat/tomcat-config.sh
 
 # Add script for starting tomcat as runit service
 RUN mkdir /etc/service/tomcat7

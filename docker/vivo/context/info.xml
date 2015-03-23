@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context path="/info"
+         docBase="/var/lib/tomcat7/webapps/vivo"
+         reloadable="true"
+         cookies="true"
+         xmlNamespaceAware="false"
+         xmlValidation="false">
+
+    <!--
+    <Manager pathname="/info" />
+    -->
+
+</Context>

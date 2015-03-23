@@ -1,0 +1,13 @@
+<rdf:RDF
+        xmlns:vitro="http://vitro.mannlib.cornell.edu/ns/vitro/0.7#"
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <rdf:Description rdf:about="http://vivoweb.org/ontology#vitroPropertyGroupRDS">
+        <vitro:modTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-03-19T11:35:01</vitro:modTime>
+        <rdfs:label xml:lang="en-US">rds</rdfs:label>
+        <rdf:type rdf:resource="http://vitro.mannlib.cornell.edu/ns/vitro/0.7#PropertyGroup"/>
+        <vitro:publicDescriptionAnnot rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Affiliations and other informal associations between people and organizations</vitro:publicDescriptionAnnot>
+        <vitro:displayRank rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</vitro:displayRank>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </rdf:Description>
+</rdf:RDF>

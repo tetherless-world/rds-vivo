@@ -17,10 +17,11 @@ display:DefaultMenu
     rdfs:label "Default Menu" ;
     display:hasElement display:EventsMenuItem ;
     display:hasElement display:HomeMenuItem ;
-    display:hasElement display:DataMenuItem ;
     display:hasElement display:OrganizationsMenuItem ;
     display:hasElement display:PeopleMenuItem ;
-    display:hasElement display:ResearchMenuItem .
+    display:hasElement display:ResearchMenuItem ;
+    display:hasElement display:DataMenuItem ;
+    display:hasElement display:DatasetBrowserMenuItem .
 
 #### Menu Items for Default Menu ####
 
@@ -32,33 +33,39 @@ display:HomeMenuItem
 
 display:PeopleMenuItem
     a display:NavigationElement ;
-    display:menuPosition 2;
+    display:menuPosition 4;
     display:linkText "People";
     display:toPage display:People .
 
 display:OrganizationsMenuItem
     a display:NavigationElement ;
-    display:menuPosition 3;
+    display:menuPosition 6;
     display:linkText "Organizations";
     display:toPage display:Organizations .
 
 display:ResearchMenuItem
     a display:NavigationElement ;
-    display:menuPosition 4;
+    display:menuPosition 5;
     display:linkText "Research";
     display:toPage display:Research .
 
 display:EventsMenuItem
     a display:NavigationElement ;
-    display:menuPosition 5;
+    display:menuPosition 7;
     display:linkText "Events";
     display:toPage display:Events .
 
 display:DataMenuItem
     a display:NavigationElement ;
-    display:menuPosition 6;
+    display:menuPosition 2;
     display:linkText "Data";
     display:toPage display:Data .
+
+display:DatasetBrowserMenuItem
+    a display:NavigationElement ;
+    display:menuPosition 3;
+    display:linkText "Dataset Browser" ;
+    display:toPage display:DatasetBrowser .
 
 display:Home
     a display:HomePage ;
@@ -108,6 +115,11 @@ display:Data
     display:urlMapping "/data" ;
     display:hasDataGetter display:dataDataGetter .
 
+display:DatasetBrowser
+    a display:Page ;
+    display:title "Dataset Browser" ;
+    display:urlMapping "/browser" ;
+    display:hasDataGetter display:datasetBrowserDataGetter .
 
 #The data getter objects used above
 display:peopleDataGetter
@@ -134,6 +146,10 @@ display:homeDataGetter
       a <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.BrowseDataGetter> .
 
 display:dataDataGetter
-    a <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.ClassGroupPageData>;
-    display:forClassGroup
-        vivoweb:vitroClassGroupData .
+    a <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.ClassGroupPageData> ;
+    display:forClassGroup vivoweb:vitroClassGroupData .
+
+display:datasetBrowserDataGetter
+    a  <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.FixedHTMLDataGetter> ;
+    display:htmlValue "<iframe src=\"/search/index.html\" style=\"overflow:hidden;height:800;width:100%\" height=\"1200\" width=\"100%\" scrolling=\"no\"></iframe>"@en ;
+    display:saveToVar "html" .
