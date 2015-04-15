@@ -1,8 +1,13 @@
+<#-- Renders the html for the selected data section on the customized home page. -->
+<#-- Works in conjunction with the rdsHomePageUtils.js file, which contains the ajax call. -->
 <#macro selectedDataHtml>
 <section id="home-selected-data" class="home-sections">
     <h4>${i18n().datasets_capitalized}</h4>
     <div id="selected-data">
     </div>
+    <ul style='list-style:none'>
+        <li style='no-datasets-found'><p>${i18n().no_datasets_found}</p></li>
+    </ul>
 </section>
 </#macro>
 

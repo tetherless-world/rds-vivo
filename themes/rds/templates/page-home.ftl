@@ -63,7 +63,7 @@
 
         <#include "footer.ftl">
         <#-- builds a json object that is used by js to render the academic departments section -->
-        <#-- <@lh.listAcademicDepartments /> -->
+        <@lh.listAcademicDepartments />
 
         <#-- builds a json object that is used by js to render the selected data section -->
         <@rds.listSelectedData />
@@ -90,7 +90,7 @@
             noDatasetsFound: '${i18n().no_datasets_found}',
             viewAllDatasets: '${i18n().view_all_datasets}'
         };
-        // set the 'limmit search' text and alignment
+        // set the 'limit search' text and alignment
         if  ( $('input.search-homepage').css('text-align') == "right" ) {       
              $('input.search-homepage').attr("value","${i18n().limit_search} \u2192");
         }  
