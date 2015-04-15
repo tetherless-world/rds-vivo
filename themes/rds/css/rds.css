@@ -1035,16 +1035,18 @@ a.view-all-style {
     padding: 3px 10px;
 }
 
+/*
 #home-selected-data ul {
     padding: 0.7em 0 0.6em 0.75em;
 }
+*/
 
 #home-selected-data li {
-    line-height: 1.25em;
     padding-top: 1.0em;
     padding-right: 4px;
     font-size: 0.9em;
     margin-top: 0.7em;
+    padding-left:1.2em
 }
 
 #home-selected-data li:last-child {
