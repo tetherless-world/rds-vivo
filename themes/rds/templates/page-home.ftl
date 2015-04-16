@@ -24,6 +24,7 @@
             <#include "geoFocusMapScripts.ftl">
         </#if>
         <script type="text/javascript" src="${urls.base}/js/homePageUtils.js?version=x"></script>
+        <script type="text/javascript" src="${urls.base}/js/rdsHomePageUtils.js?version=x"></script>
     </head>
     
     <body class="${bodyClasses!}" onload="${bodyOnload!}">

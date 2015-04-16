@@ -5,11 +5,6 @@
     <h4>${i18n().datasets_capitalized}</h4>
     <div id="selected-data">
     </div>
-    <ul>
-        <p></p>
-        <li style='padding-left:1.2em'>${i18n().no_datasets_found}</li>
-        <p></p>
-    </ul>
 </section>
 </#macro>
 

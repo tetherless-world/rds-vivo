@@ -1027,7 +1027,7 @@ a.view-all-style {
 #home-selected-data {
     width: 297px;
     float: left;
-    clear: both;
+    /*clear: both;*/
 }
 
 #home-selected-data h4 {
