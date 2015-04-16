@@ -19,7 +19,7 @@ $(document).ready(function(){
             html = "<ul>";
 
             for ( var i = 0; i < datasetCount; i++) {
-                html += "<li role='listitem'><a href='" + urlsBase + "/individual?uri="
+                html += "<li role='listitem' style='line-height: normal'><a href='" + urlsBase + "/individual?uri="
                 + selectedData[i].uri + "'>"
                 + selectedData[i].title.trim() + "</a>";
 
