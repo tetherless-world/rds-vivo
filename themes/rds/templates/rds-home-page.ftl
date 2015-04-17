@@ -18,9 +18,7 @@
                 <#assign leadResearcher = resultRow["leadResearcher"] />
                 <#assign leadResearcher_name = resultRow["leadResearcher_name"] />
                 <#assign localname = uri?substring(uri?last_index_of("/")) />
-
                 // is there a way to set individualURI in the home page?
-
             </#list>
         </#if>
     ];

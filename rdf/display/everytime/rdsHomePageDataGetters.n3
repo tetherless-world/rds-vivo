@@ -6,8 +6,6 @@
 @prefix vivoweb: <http://vivoweb.org/ontology#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
-# selected data datagetter
-
 <freemarker:rds-home-page.ftl> display:hasDataGetter display:selectedDataDataGetter .
 
 display:selectedDataDataGetter
@@ -20,12 +18,12 @@ display:selectedDataDataGetter
     PREFIX rds:  <http://purl.org/twc/ns/rds#>
     PREFIX dct:  <http://purl.org/dc/terms/>
 
-    SELECT DISTINCT ?dataset ?title ?leadResearcher ?leadResearcher_name
+    SELECT DISTINCT ?dataset ?dataset_title ?leadResearcher ?leadResearcher_name
     WHERE
     {
         ?dataset a dcat:Dataset .
-        ?dataset dct:title ?label .
-        BIND(str(?label) as ?title) .
+        ?dataset rdfs:label ?label .
+        BIND(str(?label) as ?dataset_title) .
         OPTIONAL {
             ?dataset rds:leadResearcher ?leadResearcher .
             ?leadResearcher rdfs:label ?leadResearcher_label .
@@ -46,5 +44,5 @@ display:keywordDataGetter
     SELECT DISTINCT ?keyword
     WHERE {
         ?individualURI vivo:freetextKeyword ?keyword
-    }
+    } LIMIT 10
     """ .
