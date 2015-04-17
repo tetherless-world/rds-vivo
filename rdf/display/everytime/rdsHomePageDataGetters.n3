@@ -29,7 +29,7 @@ display:selectedDataDataGetter
             ?leadResearcher rdfs:label ?leadResearcher_label .
             BIND(str(?leadResearcher_label) AS ?leadResearcher_name)
         }
-    } LIMIT 5
+    } LIMIT 3
     """ .
 
 <freemarker:lib-home-page.ftl> display:hasDataGetter display:keywordDataGetter .

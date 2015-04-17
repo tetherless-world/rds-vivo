@@ -1042,9 +1042,9 @@ a.view-all-style {
 */
 
 #home-selected-data li {
-    padding-top: 1.0em;
+    /*padding-top: 1.0em;*/
     padding-right: 4px;
-    font-size: 0.9em;
+    font-size: 0.825em;
     margin-top: 0.7em;
     padding-left:1.2em
 }
@@ -1055,11 +1055,11 @@ a.view-all-style {
 }
 
 #home-selected-data li span {
-    color: #fff;
-    background: url(../../../images/count-background.png) no-repeat;
+    /*color: #fff;*/
+    /*background: url(../../../images/count-background.png) no-repeat;*/
     width: 65px;
     height: 27px;
-    display: inline-block;
+    /*display: inline-block;*/
     padding: 6px 8px 0 0;
     margin-left: 4px;
     text-align: center;
