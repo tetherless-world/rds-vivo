@@ -13,8 +13,9 @@
     var selectedData = [
         <#if selectedDataDG?has_content>
             <#list selectedDataDG as resultRow>
+            <#if resultRow?has_content>
                 <#assign uri = resultRow["dataset"] />
-                <#assign title = resultRow["dataset_title"]/>
+                <#assign title = resultRow["dataset_title"] />
                 <#assign leadResearcher = resultRow["leadResearcher"] />
                 <#assign leadResearcher_name = resultRow["leadResearcher_name"] />
                 <#assign keywords = resultRow["keywords"] />
@@ -25,14 +26,8 @@
                     "leadResearcher": "${leadResearcher}",
                     "leadResearcher_name": "${leadResearcher_name}",
                     "keywords": "${keywords}"
-                    <#--
-                    "keywords": [
-                            <#list keywords as keyword>
-                                "${keyword}"
-                            <#if keyword_has_next>,</#if>
-                            </#list>
-                    ] -->
                 }<#if (resultRow_has_next)>,</#if>
+            </#if>
             </#list>
         </#if>
     ];

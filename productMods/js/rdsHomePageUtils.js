@@ -21,7 +21,7 @@ $(document).ready(function(){
             for ( var i = 0; i < datasetCount; i++) {
                 html += "<li role='listitem'><a href='" + urlsBase + "/individual?uri="
                 + selectedData[i].uri + "'>"
-                + selectedData[i].title + "</a>";
+                + selectedData[i].title.trim() + "</a>";
 
                 html += "<br />"
                 + "<span class='title' style='font-size: 0.825em'>";
@@ -29,12 +29,12 @@ $(document).ready(function(){
                 if(selectedData[i].leadResearcher != null) {
                     html += "<b>Lead Researcher:</b> <a href='" + urlsBase + "/individual?uri="
                     + selectedData[i].leadResearcher + "'>"
-                    + selectedData[i].leadResearcher_name + "</a>"
+                    + selectedData[i].leadResearcher_name.trim() + "</a>"
                     + "</span>";
                 }
 
                 if(selectedData[i].keywords != "") {
-                    html += "<span class='title' style='font-size: 0.825em'>"
+                    html += "<br />" + "<span class='title' style='font-size: 0.825em'>"
                     + "<b>Keywords:</b> " + selectedData[i].keywords
                     + "</span>";
                 }
