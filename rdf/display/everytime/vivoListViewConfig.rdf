@@ -94,6 +94,16 @@
         <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-orcidId.xml</display:listViewConfigFile>
     </rdf:Description>
 
+    <rdf:Description rdf:about="http://www.w3.org/ns/dcat#contactPoint">
+        <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-fullName.xml</display:listViewConfigFile>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://www.w3.org/ns/dcat#distribution">
+        <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-dcatDistribution.xml</display:listViewConfigFile>
+    </rdf:Description>
+
+    <!-- TODO cites as data source -->
+
     <!--
      ******************************************************************
      data property custom list views

@@ -1023,6 +1023,58 @@ a.view-all-style {
     display: inline;
     padding: 3px 10px;
 }
+
+#home-selected-data {
+    width: 297px;
+    float: left;
+    /*clear: both;*/
+}
+
+#home-selected-data h4 {
+    display: inline;
+    padding: 3px 10px;
+}
+
+/*
+#home-selected-data ul {
+    padding: 0.7em 0 0.6em 0.75em;
+}
+*/
+
+#home-selected-data li {
+    /*padding-top: 1.0em;*/
+    padding-right: 4px;
+    font-size: 0.825em;
+    margin-top: 0.7em;
+    padding-left:1.2em
+}
+
+#home-selected-data li:last-child {
+    text-align:right;
+    padding: 4px 16px 0 0;
+}
+
+#home-selected-data li span {
+    /*color: #fff;*/
+    /*background: url(../../../images/count-background.png) no-repeat;*/
+    width: 65px;
+    height: 27px;
+    /*display: inline-block;*/
+    padding: 6px 8px 0 0;
+    margin-left: 4px;
+    text-align: center;
+}
+
+.no-datasets-found {
+    padding-top:0.3em
+}
+
+.all-datasets-link {
+    font-size:0.9em;
+    text-align:right;
+    padding: 6px 16px 0 0
+}
+
 div#tempSpacing {
     margin-top:30px;
     padding-left:20px;

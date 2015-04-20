@@ -45,9 +45,10 @@ ENV CATALINA_HOME /usr/share/tomcat7
 ENV PATH $PATH:$CATALINA_HOME/bin
 RUN echo "JAVA_HOME=/usr/lib/jvm/java-7-oracle" >> /etc/default/tomcat7
 
-# Add script for configuring tomcat based on ENV variables
-ADD docker/vivo/tomcat-config.sh /tomcat-config.sh
-RUN chmod +x /tomcat-config.sh
+# Add scripts for configuring tomcat based on ENV variables
+ADD docker/vivo/tomcat-config.sh /etc/tomcat/tomcat-config.sh
+ADD docker/vivo/server.xsl /etc/tomcat/server.xsl
+RUN chmod +x /etc/tomcat/tomcat-config.sh
 
 # Add script for starting tomcat as runit service
 RUN mkdir /etc/service/tomcat7
@@ -61,13 +62,11 @@ ENV VIVO_HOME /opt/vivo/home
 ENV VIVO_DATA /usr/local/vivo/data
 ENV VIVO_BUILD /opt/build
 
-VOLUME ["${VIVO_HOME}", "${VIVO_DATA}"]
-
 # Create VIVO required directories
+RUN mkdir -p ${VIVO_HOME}
+RUN mkdir -p ${VIVO_DATA}
 RUN mkdir -p ${CATALINA_BASE}/temp
 RUN mkdir -p ${CATALINA_HOME}/logs
-
-WORKDIR ${VIVO_BUILD}
 
 ADD productMods ${VIVO_BUILD}/productMods
 ADD rdf ${VIVO_BUILD}/rdf
@@ -79,7 +78,7 @@ ADD vitro ${VIVO_BUILD}/vitro
 ADD vivo ${VIVO_BUILD}/vivo
 ADD build.properties build.xml ${VIVO_BUILD}/
 
-WORKDIR ..
+WORKDIR ${VIVO_BUILD}
 RUN ant all
 
 # copy runtime.properties to /etc/vivo where it is found by my-init configure script on start-up
@@ -92,6 +91,8 @@ RUN chown -R tomcat7:tomcat7 ${VIVO_DATA}
 RUN chown -R tomcat7:tomcat7 ${CATALINA_BASE}/temp
 RUN chown -R tomcat7:tomcat7 ${CATALINA_BASE}/logs
 RUN chown -R tomcat7:tomcat7 ${CATALINA_HOME}/logs
+
+VOLUME ["${VIVO_HOME}", "${VIVO_DATA}"]
 
 # Add vivo configuration script to runit
 ADD docker/vivo/my_init.d/ /etc/my_init.d/

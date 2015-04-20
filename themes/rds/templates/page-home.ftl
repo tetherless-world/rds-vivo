@@ -14,6 +14,8 @@
 -->
 <#import "lib-home-page.ftl" as lh>
 
+<#import "rds-home-page.ftl" as rds>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -22,6 +24,7 @@
             <#include "geoFocusMapScripts.ftl">
         </#if>
         <script type="text/javascript" src="${urls.base}/js/homePageUtils.js?version=x"></script>
+        <script type="text/javascript" src="${urls.base}/js/rdsHomePageUtils.js?version=x"></script>
     </head>
     
     <body class="${bodyClasses!}" onload="${bodyOnload!}">
@@ -43,13 +46,13 @@
         <@widget name="login" />
         
         <!-- List of research classes: e.g., articles, books, collections, conference papers -->
-        <#-- <@lh.researchClasses /> -->
+        <@lh.researchClasses />
                 
         <!-- List of four randomly selected faculty members -->
-        <#-- <@lh.facultyMbrHtml /> -->
+        <@lh.facultyMbrHtml />
 
-        <!-- List of randomly selected academic departments -->
-        <#-- <@lh.academicDeptsHtml /> -->
+        <!-- List of randomly selected datasets -->
+        <@rds.selectedDataHtml />
 
         <#if geoFocusMapsEnabled >
             <!-- Map display of researchers' areas of geographic focus. Must be enabled in runtime.properties -->
@@ -61,7 +64,11 @@
 
         <#include "footer.ftl">
         <#-- builds a json object that is used by js to render the academic departments section -->
-        <#-- <@lh.listAcademicDepartments /> -->
+        <@lh.listAcademicDepartments />
+
+        <#-- builds a json object that is used by js to render the selected data section -->
+        <@rds.listSelectedData />
+
     <script>       
         var i18nStrings = {
             researcherString: '${i18n().researcher}',
@@ -80,9 +87,11 @@
             viewAllFaculty: '${i18n().view_all_faculty}',
             viewAllString: '${i18n().view_all}',
             viewAllDepartments: '${i18n().view_all_departments}',
-            noDepartmentsFound: '${i18n().no_departments_found}'
+            noDepartmentsFound: '${i18n().no_departments_found}',
+            noDatasetsFound: '${i18n().no_datasets_found}',
+            viewAllDatasets: '${i18n().view_all_datasets}'
         };
-        // set the 'limmit search' text and alignment
+        // set the 'limit search' text and alignment
         if  ( $('input.search-homepage').css('text-align') == "right" ) {       
              $('input.search-homepage').attr("value","${i18n().limit_search} \u2192");
         }  
