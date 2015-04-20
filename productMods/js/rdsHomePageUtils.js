@@ -19,7 +19,7 @@ $(document).ready(function(){
             html = "<ul>";
 
             for ( var i = 0; i < datasetCount; i++) {
-                html += "<li role='listitem'><a href='" + urlsBase + "/individual"
+                html += "<li role='listitem'><a href='" + urlsBase + "/individual?uri="
                 + selectedData[i].uri + "'>"
                 + selectedData[i].title + "</a>";
 
@@ -27,9 +27,15 @@ $(document).ready(function(){
                 + "<span class='title' style='font-size: 0.825em'>";
 
                 if(selectedData[i].leadResearcher != null) {
-                    html += "<b>Lead Researcher:</b> <a href='" + urlsBase + "/individual"
+                    html += "<b>Lead Researcher:</b> <a href='" + urlsBase + "/individual?uri="
                     + selectedData[i].leadResearcher + "'>"
                     + selectedData[i].leadResearcher_name + "</a>"
+                    + "</span>";
+                }
+
+                if(selectedData[i].keywords != "") {
+                    html += "<span class='title' style='font-size: 0.825em'>"
+                    + "<b>Keywords:</b> " + selectedData[i].keywords
                     + "</span>";
                 }
 
@@ -37,8 +43,7 @@ $(document).ready(function(){
                 + "</li>";
             }
 
-            html += "</ul><ul style='list-style:none'>"
-            + "<li style='all-datasets-link'><a href='"
+            html += "<li style='all-datasets-link'><a href='"
             + urlsBase
             + "/data#http://www.w3.org/ns/dcat#Dataset' alt='"
             + i18nStrings.viewAllDatasets + "'>"

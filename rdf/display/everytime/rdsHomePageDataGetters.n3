@@ -18,7 +18,7 @@ display:selectedDataDataGetter
     PREFIX rds:  <http://purl.org/twc/ns/rds#>
     PREFIX dct:  <http://purl.org/dc/terms/>
 
-    SELECT DISTINCT ?dataset ?dataset_title ?leadResearcher ?leadResearcher_name
+    SELECT DISTINCT ?dataset ?dataset_title ?leadResearcher ?leadResearcher_name (group_concat(?kw; separator=", ") as ?keywords)
     WHERE
     {
         ?dataset a dcat:Dataset .
@@ -29,10 +29,14 @@ display:selectedDataDataGetter
             ?leadResearcher rdfs:label ?leadResearcher_label .
             BIND(str(?leadResearcher_label) AS ?leadResearcher_name)
         }
-    } LIMIT 3
+        OPTIONAL {
+            ?dataset dcat:keyword ?kw .
+        }
+    } GROUP BY ?dataset ?dataset_title ?leadResearcher ?leadResearcher_name
+    LIMIT 3
     """ .
 
-<freemarker:lib-home-page.ftl> display:hasDataGetter display:keywordDataGetter .
+<freemarker:rds-home-page.ftl> display:hasDataGetter display:keywordDataGetter .
 
 display:keywordDataGetter
     a <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.SparqlQueryDataGetter> ;
@@ -43,6 +47,6 @@ display:keywordDataGetter
 
     SELECT DISTINCT ?keyword
     WHERE {
-        ?individualURI vivo:freetextKeyword ?keyword
-    } LIMIT 10
+        ?uri vivo:freetextKeyword ?keyword
+    } LIMIT 5
     """ .

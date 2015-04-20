@@ -17,13 +17,21 @@
                 <#assign title = resultRow["dataset_title"]/>
                 <#assign leadResearcher = resultRow["leadResearcher"] />
                 <#assign leadResearcher_name = resultRow["leadResearcher_name"] />
+                <#assign keywords = resultRow["keywords"] />
                 <#assign localname = uri?substring(uri?last_index_of("/")) />
-                <#-- is there a way to set individualURI in the home page? -->
                 {
                     "uri": "${uri}",
                     "title": "${title}",
                     "leadResearcher": "${leadResearcher}",
-                    "leadResearcher_name": "${leadResearcher_name}"
+                    "leadResearcher_name": "${leadResearcher_name}",
+                    "keywords": "${keywords}"
+                    <#--
+                    "keywords": [
+                            <#list keywords as keyword>
+                                "${keyword}"
+                            <#if keyword_has_next>,</#if>
+                            </#list>
+                    ] -->
                 }<#if (resultRow_has_next)>,</#if>
             </#list>
         </#if>
