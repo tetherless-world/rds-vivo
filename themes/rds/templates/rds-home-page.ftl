@@ -13,7 +13,7 @@
     var selectedData = [
         <#if selectedDataDG?has_content>
             <#list selectedDataDG as resultRow>
-            <#if resultRow?has_content>
+            <#if resultRow["dataset"]?has_content>
                 <#assign uri = resultRow["dataset"] />
                 <#assign title = resultRow["dataset_title"] />
                 <#assign leadResearcher = resultRow["leadResearcher"] />
