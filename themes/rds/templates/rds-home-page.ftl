@@ -43,6 +43,6 @@
             </#list>
         </#if>
     ];
-    var urlsBase = "{urls.base}";
+    var urlsBase = "${urls.base}";
 </script>
 </#macro>
