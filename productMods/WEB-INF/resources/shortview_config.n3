@@ -1,0 +1,110 @@
+# $This file is distributed under the terms of the license in /doc/license.txt$ 
+
+#
+# Short View configuration
+#
+# This file allows a Vitro administrator to configure short view templates and data getters
+# for individuals of particular classes in particular contexts. This is a transitional
+# implementation, and should be replaced when the work on the Application and Display
+# Ontology is complete.
+#
+# Find out how to use this file at 
+# https://wiki.duraspace.org/display/VIVO/Using+Short+Views+in+Release+1.5
+#
+
+@prefix vivo:        <http://vivoweb.org/ontology/core#> .
+@prefix vitro:       <http://vitro.mannlib.cornell.edu/ns/vitro/0.7#> .
+@prefix owl:         <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:         <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcat:        <http://www.w3.org/ns/dcat#> .
+@prefix display:     <http://vitro.mannlib.cornell.edu/ontologies/display/1.1#> .
+@prefix dg:          <java:edu.cornell.mannlib.vitro.webapp.utils.dataGetter.> .
+@prefix :            <http://data.tw.rpi.edu/config#> .
+
+dcat:Dataset
+    display:hasCustomView :datasetSearchView ;
+    display:hasCustomView :datasetBrowseView ;
+    display:hasCustomView :datasetIndexView ;
+    .
+
+:datasetBrowseView
+    a display:customViewForIndividual ;
+    display:appliesToContext "BROWSE" ;
+    display:hasTemplate "view-browse-dataset.ftl" ;
+    display:hasDataGetter :datasetDG .
+
+:datasetSearchView
+    a display:customViewForIndividual ;
+    display:appliesToContext "SEARCH" ;
+    display:hasTemplate "view-search-dataset.ftl" ;
+    display:hasDataGetter :datasetDG .
+
+:datasetIndexView
+    a display:customViewForIndividual ;
+    display:appliesToContext "INDEX" ;
+    display:hasTemplate "view-index-dataset.ftl" ;
+    display:hasDataGetter :datasetDG .
+
+:datasetDG
+    a dg:SparqlQueryDataGetter ;
+    display:saveToVar "details" ;
+    display:query """
+PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcat:  <http://www.w3.org/ns/dcat#>
+PREFIX dct:   <http://purl.org/dc/terms/>
+PREFIX rds:   <http://purl.org/twc/ns/rds#>
+SELECT DISTINCT ?dataset_title ?description ?leadResearcher ?leadResearcher_name
+WHERE {
+  ?individualUri rdfs:label ?dataset_title .
+  OPTIONAL {
+    ?individualUri dct:description ?description
+  }
+  OPTIONAL {
+    ?dataset rds:leadResearcher ?leadResearcher .
+    ?leadResearcher rdfs:label ?leadResearcher_label .
+    BIND(str(?leadResearcher_label) AS ?leadResearcher_name)
+  }
+} LIMIT 1
+""".
+
+#:datasetKeywordsDG
+#    a dg:SparqlQueryDataGetter ;
+#    display:saveToVar "keywords" ;
+#    display:query """
+#PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+#PREFIX dcat:  <http://www.w3.org/ns/dcat#>
+#SELECT ?keyword
+#WHERE {
+# ?individualUri dcat:keyword ?k .
+# BIND(str(?k) AS ?keyword)
+#} LIMIT 20
+#""" .
+
+#:datasetLeadResearchersDG
+#    a dg:SparqlQueryDataGetter ;
+#    display:saveToVar "leadResearchers" ;
+#    display:query """
+#PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+#PREFIX dcat:  <http://www.w3.org/ns/dcat#>
+#SELECT ?leadResearcher ?name
+#WHERE {
+# ?individualUri rds:leadResearcher ?leadResearcher .
+# ?leadResearcher rdfs:label ?l
+# BIND(str(?l) AS ?name)
+#} LIMIT 20
+#""" .
+
+#:datasetContributorsDG
+#    a dg:SparqlQueryDataGetter ;
+#    display:saveToVar "contributors" ;
+#    display:query """
+#PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+#PREFIX dcat:  <http://www.w3.org/ns/dcat#>
+#PREFIX dct:   <http://purl.org/dc/terms/>
+#SELECT ?contributor ?name
+#WHERE {
+# ?individualUri dct:contributor ?contributor .
+# ?contributor rdfs:label ?l
+# BIND(str(?l) AS ?name)
+#} LIMIT 20
+#""".
