@@ -16,9 +16,21 @@
             <#if resultRow["dataset"]?has_content>
                 <#assign uri = resultRow["dataset"] />
                 <#assign title = resultRow["dataset_title"] />
-                <#assign leadResearcher = resultRow["leadResearcher"] />
-                <#assign leadResearcher_name = resultRow["leadResearcher_name"] />
-                <#assign keywords = resultRow["keywords"] />
+
+                <#if resultRow["leadResearcher"]?has_content>
+                    <#assign leadResearcher = resultRow["leadResearcher"] />
+                    <#assign leadResearcher_name = resultRow["leadResearcher_name"] />
+                <#else>
+                    <#assign leadResearcher = "" />
+                    <#assign leadResearcher_name = "" />
+                </#if>
+
+                <#if resultRow["keywords"]?has_content>
+                    <#assign keywords = resultRow["keywords"] />
+                <#else>
+                    <#assign keywords = "" />
+                </#if>
+
                 <#assign localname = uri?substring(uri?last_index_of("/")) />
                 {
                     "uri": "${uri}",
