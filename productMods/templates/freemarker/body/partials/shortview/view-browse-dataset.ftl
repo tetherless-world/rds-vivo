@@ -7,7 +7,7 @@
 <span class="title"><strong>Dataset</strong></span>
 
 <#if (details[0].description)?has_content >
-    <span class="title"><strong>Description</strong>${details[0].description}</span>
+    <span class="title"><strong>Description:</strong> ${details[0].description}</span>
 </#if>
 
 <#if (details[0].leadResearcher)?has_content >
@@ -15,7 +15,7 @@
 </#if>
 
 <#if (details[0].keywords)?has_content >
-    <span class="property"><strong>Keywords:</strong> ${details[0].keywords}</span>
+    <span class="title"><strong>Keywords:</strong> ${details[0].keywords}</span>
 </#if>
 
 </li>
