@@ -11,7 +11,18 @@
 </#if>
 
 <#if (details[0].leadResearcher)?has_content >
-    <span class="title"><strong>Lead Researcher:</strong> <a href="${details[0].leadResearcher}">${details[0].leadResearcher_name}</a></span>
+    <span class="title"><strong>Lead Researcher:</strong> <a href="${urls.base}/individual?uri=${details[0].leadResearcher}">${details[0].leadResearcher_name}</a></span>
+</#if>
+
+<#if contributors?has_content>
+    <span class="title"><strong>Contributors:</strong>
+        <#list contributors as resultRow>
+            <#if resultRow?has_content>
+                <a href="${urls.base}/individual?uri=${resultRow.contributor}">${resultRow.name}</a>
+                <#if (resultRow_has_next)>, </#if>
+            </#if>
+        </#list>
+    </span>
 </#if>
 
 <#if (details[0].keywords)?has_content >
