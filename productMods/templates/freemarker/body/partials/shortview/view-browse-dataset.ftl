@@ -4,18 +4,18 @@
     <h1>
         <a href="${individual.profileUrl}" title="${i18n().view_profile_page_for} ${individual.name}}">${individual.name}</a>
     </h1>
-<span class="title">Dataset</span>
+<span class="title"><strong>Dataset</strong></span>
 
-<#if (details[0].description)?has_content>
-    <p class="snippet">${details[0].description}</p>
+<#if (details[0].description)?has_content >
+    <span class="title"><strong>Description</strong>${details[0].description}</span>
 </#if>
 
 <#if (details[0].leadResearcher)?has_content >
-    <span class="title"><em>Lead Researcher:</em> <a href="${details[0].leadResearcher}">${details[0].leadResearcher_name}</a></span>
+    <span class="title"><strong>Lead Researcher:</strong> <a href="${details[0].leadResearcher}">${details[0].leadResearcher_name}</a></span>
 </#if>
 
 <#if (details[0].keywords)?has_content >
-    <span class="title"><em>Keywords:</em> ${details[0].keywords}</span>
+    <span class="property"><strong>Keywords:</strong> ${details[0].keywords}</span>
 </#if>
 
 </li>
