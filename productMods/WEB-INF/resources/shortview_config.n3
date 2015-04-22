@@ -53,18 +53,22 @@ PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX dcat:  <http://www.w3.org/ns/dcat#>
 PREFIX dct:   <http://purl.org/dc/terms/>
 PREFIX rds:   <http://purl.org/twc/ns/rds#>
-SELECT DISTINCT ?dataset_title ?description ?leadResearcher ?leadResearcher_name
+SELECT DISTINCT ?dataset_title ?description ?leadResearcher ?leadResearcher_name (group_concat(?kw; separator=", ") as ?keywords)
 WHERE {
   ?individualUri rdfs:label ?dataset_title .
   OPTIONAL {
     ?individualUri dct:description ?description
   }
   OPTIONAL {
-    ?dataset rds:leadResearcher ?leadResearcher .
+    ?individualUri rds:leadResearcher ?leadResearcher .
     ?leadResearcher rdfs:label ?leadResearcher_label .
     BIND(str(?leadResearcher_label) AS ?leadResearcher_name)
   }
-} LIMIT 1
+  OPTIONAL {
+    ?individualUri dcat:keyword ?kw .
+  }
+} GROUP BY ?dataset_title ?leadResearcher ?leadResearcher_name
+LIMIT 1
 """.
 
 #:datasetKeywordsDG
