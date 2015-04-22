@@ -67,7 +67,7 @@ WHERE {
   OPTIONAL {
     ?individualUri dcat:keyword ?kw .
   }
-} GROUP BY ?dataset_title ?leadResearcher ?leadResearcher_name
+} GROUP BY ?dataset_title ?description ?leadResearcher ?leadResearcher_name
 LIMIT 1
 """.
 
