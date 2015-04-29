@@ -10,13 +10,18 @@ export NOTIFY_USER=zednis2@rpi.edu
 export MAIL_SENDER=zednis2@rpi.edu
 export BACKUP_LOG=/var/log/rds.backup.log
 
-if [ ! -s ${ENV_FILE} ]; then
-    echo "RDS VIVO DB Backup Failure: $(date)" >> ${BACKUP_LOG}
-    echo "unable to locate file ${ENV_FILE}" >> ${BACKUP_LOG}
-    exit 1
-fi
+# TODO read these from ${ENV_FILE}
+export MYSQL_USER=vivo
+export MYSQL_PASSWORD=docker-test
+export MYSQL_DB=vivodb
 
-source ${ENV_FILE}
+#if [ ! -s ${ENV_FILE} ]; then
+#    echo "RDS VIVO DB Backup Failure: $(date)" >> ${BACKUP_LOG}
+#    echo "unable to locate file ${ENV_FILE}" >> ${BACKUP_LOG}
+#    exit 1
+#fi
+
+#source ${ENV_FILE}
 
 # Run the backup command
 docker exec -it ${CONTAINER} mysqldump --user=${MYSQL_USER} --password=${MYSQL_PASSWORD} ${MYSQL_DB} > ${DUMP_FILE} 2> ${ERROR_FILE}
