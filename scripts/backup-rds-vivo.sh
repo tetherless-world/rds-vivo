@@ -24,7 +24,7 @@ export MYSQL_DB=vivodb
 #source ${ENV_FILE}
 
 # Run the backup command
-docker exec -it ${CONTAINER} mysqldump --user=${MYSQL_USER} --password=${MYSQL_PASSWORD} ${MYSQL_DB} > ${DUMP_FILE} 2> ${ERROR_FILE}
+docker exec -i ${CONTAINER} mysqldump --user=${MYSQL_USER} --password=${MYSQL_PASSWORD} ${MYSQL_DB} > ${DUMP_FILE} 2> ${ERROR_FILE}
 
 # GZIP DUMP_FILE if it exists (and is not empty)
 if [ -s ${DUMP_FILE} ] ; then
