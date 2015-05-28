@@ -45,6 +45,5 @@
 </section>
 
 ${stylesheets.add('<link rel="stylesheet" href="${urls.base}/templates/freemarker/edit/forms/css/customForm.css" />')}
-<#--
-${scripts.add('<script type="text/javascript" src="${urls.base}/templates/freemarker/edit/forms/js/newIndividualFormUtils.js"></script>')}
--->
+${scripts.add('<script type="text/javascript" src="${urls.base}/templates/freemarker/edit/forms/js/newDatasetFormUtils.js"></script>')}
+
