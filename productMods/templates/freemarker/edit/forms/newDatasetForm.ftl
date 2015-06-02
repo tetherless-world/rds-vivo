@@ -3,6 +3,7 @@
 
 <#import "lib-vivo-form.ftl" as lvf>
 
+<#assign typeName = editConfiguration.pageData.typeName/>
 <#assign labelValue = lvf.getFormFieldValue(editSubmission, editConfiguration, "label")/>
 <#assign descriptionValue = lvf.getFormFieldValue(editSubmission, editConfiguration, "description")/>
 
@@ -20,12 +21,12 @@
     <form id="newDataset" class="customForm noIE67" action="${submitUrl}"  role="add new dataset">
 
         <p>
-            <label for="label">${il18n().name_capitalized} ${requiredHint}</label>
+            <label for="label">${i18n().name_capitalized} ${requiredHint}</label>
             <input size="30" type="text" id="label" name="label" value="${labelValue}" />
         </p>
 
         <p>
-            <label for="description">${il18n().description}</label>
+            <label for="description">${i18n().description}</label>
             <textarea id="description" name="description">${descriptionValue}</textarea>
         </p>
 
