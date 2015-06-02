@@ -47,7 +47,7 @@ RUN echo "JAVA_HOME=/usr/lib/jvm/java-7-oracle" >> /etc/default/tomcat7
 
 # Add scripts for configuring tomcat based on ENV variables
 ADD docker/vivo/tomcat-config.sh /etc/tomcat/tomcat-config.sh
-ADD docker/vivo/server.xsl /etc/tomcat/server.xsl
+#ADD docker/vivo/server.xsl /etc/tomcat/server.xsl
 RUN chmod +x /etc/tomcat/tomcat-config.sh
 
 # Add script for starting tomcat as runit service
@@ -84,6 +84,9 @@ RUN ant all
 # copy runtime.properties to /etc/vivo where it is found by my-init configure script on start-up
 RUN mkdir -p /etc/vivo
 ADD runtime.properties /etc/vivo/
+
+# copy applicationSetup.n3 into $VIVO_HOME/config
+ADD applicationSetup.n3 ${VIVO_HOME}/config/applicationSetup.n3
 
 # Set permissions on all VIVO directories
 RUN chown -R tomcat7:tomcat7 ${VIVO_HOME}
