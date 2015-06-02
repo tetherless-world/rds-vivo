@@ -12,7 +12,7 @@
         <select id="VClassURI" name="typeOfNew" class="form-item long-options" role="select" onchange="updateEditForm(this)">
             <@form.optionGroups groups=dataInput.groupedClassOptions />
         </select>
-        <input type="hidden" name="editForm" value="edu.cornell.mannlib.vitro.webapp.edit.n3editing.configuration.generators.NewIndividualFormGenerator" role="input" />
+        <input type="hidden" id="editForm" name="editForm" value="edu.cornell.mannlib.vitro.webapp.edit.n3editing.configuration.generators.NewIndividualFormGenerator" role="input" />
         <input type="submit" id="submit" value="${i18n().add_individual_of_class}" role="button" />
     </form>
 
