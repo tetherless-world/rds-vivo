@@ -10,11 +10,14 @@ import edu.cornell.mannlib.vitro.webapp.edit.n3editing.VTwo.fields.FieldVTwo;
 
 import edu.cornell.mannlib.vitro.webapp.edit.n3editing.configuration.validators.AntiXssValidation;
 
+import edu.cornell.mannlib.vitro.webapp.utils.FrontEndEditingUtils;
+import edu.cornell.mannlib.vitro.webapp.utils.generators.EditModeUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -35,26 +38,26 @@ public class NewDatasetFormGenerator extends BaseEditConfigurationGenerator impl
     final static String FOAF = "http://xmlns.com/foaf/0.1/";
 
     final static String N3_PREFIX =
-            "@prefix dcat: <"+DCAT+"> . " +
-            "@prefix rdf: <"+RDF+"> . " +
-            "@prefix rdfs: <"+RDFS+"> . " +
-            "@prefix dct: <"+DCT+"> . " +
-            "@prefix rds: <"+RDS+"> . ";
+            "@prefix dcat: <"+DCAT+"> ."
+            + " @prefix rdf: <"+RDF+"> ."
+            + " @prefix rdfs: <"+RDFS+"> ."
+            + " @prefix dct: <"+DCT+"> ."
+            + " @prefix rds: <"+RDS+"> . ";
 
     final static String personQuery  =
-            "PREFIX rdfs: <"+RDFS+">" +
-                    " PREFIX foaf: <"+FOAF+">" +
-                    " SELECT ?person WHERE {" +
-                    " ?person a foaf:Person ." +
-                    " }";
+            "PREFIX rdfs: <"+RDFS+">"
+                    + " PREFIX foaf: <"+FOAF+">"
+                    + " SELECT ?person WHERE {"
+                    + " ?person a foaf:Person ."
+                    + " }";
 
     final static String personLabelQuery  =
-            "PREFIX rdfs: <"+RDFS+">"+
-                    " PREFIX foaf: <"+FOAF+">" +
-                    " SELECT ?personLabel WHERE {"+
-                    " ?person rdfs:label ?personLabel ."+
-                    " ?person a foaf:Person . " +
-                    " }";
+            "PREFIX rdfs: <"+RDFS+">"
+                    + " PREFIX foaf: <"+FOAF+">"
+                    + " SELECT ?personLabel WHERE {"
+                    + " ?person rdfs:label ?personLabel ."
+                    + " ?person a foaf:Person ."
+                    + " }";
 
     @Override
     public EditConfigurationVTwo getEditConfiguration(VitroRequest vreq, HttpSession session) {
@@ -74,9 +77,6 @@ public class NewDatasetFormGenerator extends BaseEditConfigurationGenerator impl
                 N3_PREFIX + "?newDataset rds:leadResearcher ?leadResearcher . \n"
         ));
 
-        // TODO call out to external service to get Handle HERE?
-        log.info("requesting handle for new dataset");
-
         config.addNewResource("newDataset", vreq.getWebappDaoFactory().getDefaultNamespace());
 
         config.setUrisOnform(list("leadResearcher"));
@@ -89,21 +89,21 @@ public class NewDatasetFormGenerator extends BaseEditConfigurationGenerator impl
         config.addField(new FieldVTwo().
                 setName("label").
                 setRangeDatatypeUri(XSD.xstring.getURI()).
-                setValidators(getLabelValidators(vreq)));
+                setValidators(list("nonempty", "datatype:" + XSD.xstring.toString())));
 
         config.addField(new FieldVTwo().
                 setName("description").
                 setRangeDatatypeUri(XSD.xstring.getURI()).
-                setValidators(getDescriptionValidators(vreq)));
+                setValidators(list("datatype:" + XSD.xstring.toString())));
 
         config.addField( new FieldVTwo().
                 setName("leadResearcherLabel").
                 setRangeDatatypeUri(XSD.xstring.toString() ).
-                setValidators( list("datatype:" + XSD.xstring.toString())));
+                setValidators(list("datatype:" + XSD.xstring.toString())));
 
         config.addField(new FieldVTwo()
                 .setName("leadResearcher")
-                .setValidators(getLeadResearcherValidators(vreq)));
+                .setValidators(list()));
 
         config.addValidator(new AntiXssValidation());
 
@@ -112,26 +112,21 @@ public class NewDatasetFormGenerator extends BaseEditConfigurationGenerator impl
 
         config.setEntityToReturnTo(" ?newDataset ");
 
+        config.setFormSpecificData(getFormSpecificData(vreq));
         prepare(vreq, config);
         return config;
     }
 
-    private List<String> getLabelValidators(VitroRequest vreq) {
-        List<String> validators = new ArrayList<String>();
-        validators.add("nonempty");
-        return validators;
+    public HashMap<String, Object> getFormSpecificData(VitroRequest vreq) {
+        HashMap<String, Object> formSpecificData = new HashMap<String, Object>();
+        formSpecificData.put("editMode", getEditMode(vreq).name().toLowerCase());
+        return formSpecificData;
     }
 
-    private List<String> getDescriptionValidators(VitroRequest vreq) {
-        List<String> validators = new ArrayList<String>();
-        //validators.add("nonempty");
-        return validators;
-    }
-
-    private List<String> getLeadResearcherValidators(VitroRequest vreq) {
-        List<String> validators = new ArrayList<String>();
-        //validators.add("");
-        return validators;
+    public FrontEndEditingUtils.EditMode getEditMode(VitroRequest vreq) {
+        List<String> predicates = new ArrayList<String>();
+        predicates.add("http://purl.obolibrary.org/obo/RO_0000053");
+        return EditModeUtils.getEditMode(vreq, predicates);
     }
 
 }
