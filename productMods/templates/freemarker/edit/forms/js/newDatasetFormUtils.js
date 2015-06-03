@@ -24,6 +24,7 @@ var newDatasetFormUtils = {
         this.form = $('#newDataset');
         this.description = $('#description');
         this.rdfsLabel = $('#label');
+        this.leadResearcher = $('#leadResearcher');
         this.submitButton = $('#submit');
     },
 

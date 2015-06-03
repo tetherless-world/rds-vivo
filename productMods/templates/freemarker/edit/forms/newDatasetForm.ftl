@@ -6,7 +6,10 @@
 <#assign typeName = "Dataset"/>
 <#assign labelValue = lvf.getFormFieldValue(editSubmission, editConfiguration, "label")/>
 <#assign descriptionValue = lvf.getFormFieldValue(editSubmission, editConfiguration, "description")/>
-<#assign leadResearcherName = lvf.getFormFieldValue(editSubmission, editConfiguration, "leadResearcher")/>
+
+<#assign personLabelValue = lvf.getFormFieldValue(editSubmission, editConfiguration, "personLabel") />
+<#assign personLabelDisplayValue = lvf.getFormFieldValue(editSubmission, editConfiguration, "personLabelDisplay") />
+<#assign existingPersonValue = lvf.getFormFieldValue(editSubmission, editConfiguration, "existingPerson") />
 
 <#--If edit submission exists, then retrieve validation errors if they exist-->
 <#if editSubmission?has_content && editSubmission.submissionExists = true && editSubmission.validationErrors?has_content>
@@ -33,9 +36,33 @@
 
         <p>
             <label for="leadResearcher">Lead Researcher</label>
-            <input id="leadResearcher" name="leadResearcher" type="text" size="50"
-                   value="${leadResearcherName}"
+            <input id="leadResearcher" name="leadResearcher"
+                   type="text"
+                   class="acSelector"
+                   acGroupName="leadResearcher"
+                   size="50"
+                   value="${personLabelValue}"
                    placeholder="Select an existing person or create a new one"/>
+
+            <input class="display" type="hidden"
+                   acGroupName="leadResearcher"
+                   id="personDisplay"
+                   name="personLabelDisplay"
+                   value="${personLabelDisplayValue}" />
+
+        <div class="acSelection" acGroupName="leadResearcher">
+            <p class="inline">
+                <label>Selected Lead Researcher:</label>
+                <span class="acSelectionInfo"></span>
+                <a href="" class="verifyMatch"  title="${i18n().verify_match_capitalized}">(${i18n().verify_match_capitalized}</a> ${i18n().or}
+                <a href="#" class="changeSelection" id="changeSelection">${i18n().change_selection})</a>
+            </p>
+        </div>
+
+        <input class="acUriReceiver" type="hidden" id="leadResearcherUri"
+               name="existingLeadResearcher"
+               flagClearLabelForExisting="true"
+               value="${existingPersonValue}" />
         </p>
 
         <#--
