@@ -3,9 +3,10 @@
 
 <#import "lib-vivo-form.ftl" as lvf>
 
-<#assign typeName = editConfiguration.pageData.typeName/>
+<#assign typeName = "Dataset"/>
 <#assign labelValue = lvf.getFormFieldValue(editSubmission, editConfiguration, "label")/>
 <#assign descriptionValue = lvf.getFormFieldValue(editSubmission, editConfiguration, "description")/>
+<#assign leadResearcherName = lvf.getFormFieldValue(editSubmission, editConfiguration, "leadResearcher")/>
 
 <#--If edit submission exists, then retrieve validation errors if they exist-->
 <#if editSubmission?has_content && editSubmission.submissionExists = true && editSubmission.validationErrors?has_content>
@@ -22,15 +23,41 @@
 
         <p>
             <label for="label">${i18n().name_capitalized} ${requiredHint}</label>
-            <input size="30" type="text" id="label" name="label" value="${labelValue}" />
+            <input type="text" id="label" name="label" size="50" value="${labelValue}" />
         </p>
 
         <p>
             <label for="description">${i18n().description}</label>
-            <textarea id="description" name="description">${descriptionValue}</textarea>
+            <textarea id="description" name="description" rows="5">${descriptionValue}</textarea>
         </p>
 
-        <#-- TODO add leadResearcher input -->
+        <p>
+            <label for="leadResearcher">Lead Researcher</label>
+            <input id="leadResearcher" name="leadResearcher" type="text" size="50"
+                   value="${leadResearcherName}"
+                   placeholder="Select an existing person or create a new one"/>
+        </p>
+
+        <#--
+        <p>
+            <label for="leadResearcher">Lead Researcher</label>
+            <input class="acSelector" size="50" type="text" acGroupName="person" id="leadResearcher" name="personLabel" value="${personLabelValue}"/>
+            <input type="text" size="50"  id="maskLabelBuilding" name="maskLabelBuilding" value="" style="display:none" >
+            <input  size="30"  type="text" id="firstName" name="firstName" value="${firstNameValue}" ><br />
+            <input type="hidden" id="lastName" name="lastName" value="">
+            <input class="display" type="hidden" acGroupName="person" id="personDisplay" name="personLabelDisplay" value="${personLabelDisplayValue}" >
+        </p>
+
+        <div class="acSelection" acGroupName="person">
+            <p class="inline">
+                <label>${i18n().selected_person}:</label>
+                <span class="acSelectionInfo"></span>
+                <a href="" class="verifyMatch"  title="${i18n().verify_match_capitalized}">(${i18n().verify_match_capitalized}</a> ${i18n().or}
+                <a href="#" class="changeSelection" id="changeSelection">${i18n().change_selection})</a>
+            </p>
+            <input class="acUriReceiver" type="hidden" id="personUri" name="existingPerson" value="${existingPersonValue}" ${flagClearLabelForExisting}="true" />
+        </div>
+        -->
 
         <#-- TODO add contributors input -->
 
